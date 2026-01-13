@@ -3,198 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Mostafa Baghi">
-    <meta name="description" content="Mostafa Baghi's professional portfolio showcasing skills, experience, and projects.">
-    <title>Mostafa Baghi's CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="author" content="Seyed Mostafa Baghi">
+    <meta name="description" content="Portfolio of Seyed Mostafa Baghi, Lead Software Developer specializing in Scalable GPS/CRM Ecosystems, Flutter, and Node.js.">
+    <title>Mostafa Baghi | Lead Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --primary: #3b82f6; /* Blue Neon */
+            --accent: #8b5cf6; /* Purple Neon */
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --glass-blur: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-darker);
+            color: var(--text-main);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* Utility: Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        /* Header / Hero */
         header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 20px;
+            position: relative;
         }
-        header h1 {
-            margin: 0;
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 3rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+            position: relative;
+            z-index: 10;
         }
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
+        
+        .avatar::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0.5;
+            filter: blur(15px);
+            z-index: -1;
         }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 30px;
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        section {
-            margin-bottom: 40px;
-        }
-        h2 {
-            color: #2c3e50;
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .skills, .experience, .projects, .education, .certifications, .contact {
-            display: grid;
-            gap: 20px;
-        }
-        .skills ul, .experience ul, .projects ul, .education ul, .certifications ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .skills li, .experience li, .projects li, .education li, .certifications li {
-            background: #fff;
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 8px;
-        }
-        .skills li span, .experience li span, .projects li span {
+
+        .role {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
             font-weight: 600;
-            color: #2c3e50;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        .contact a {
-            color: #2c3e50;
+
+        .hero-text {
+            max-width: 700px;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Skills Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tag.highlight {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        /* Project & Exp Specifics */
+        .project-title {
+            font-size: 1.4rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .project-role {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: var(--accent);
+            color: white;
+            margin-left: 10px;
+        }
+
+        /* Contact Footer */
         footer {
             text-align: center;
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px;
-            font-size: 1rem;
+            padding: 50px 20px;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
+            color: var(--text-muted);
         }
-        footer a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
+            section { padding: 50px 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
+
     <header>
-        <h1>Mostafa Baghi</h1>
-        <p>Software Developer | Full-Stack Web Developer</p>
+        <div class="avatar">SMB</div>
+        <h1>Seyed Mostafa Baghi</h1>
+        <div class="role">Lead Software Developer</div>
+        <p class="hero-text">
+            Specialized in architecting Scalable Ecosystems, High-Performance Mobile/Web Apps, and AI Solutions. 
+            Focused on Security, Memory Efficiency, and Clean Architecture for enterprise-grade systems.
+        </p>
+        <a href="path/to/your-cv.pdf" class="btn" download>Download CV <i class="fas fa-download" style="margin-left: 8px;"></i></a>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- About Me Section -->
-        <section>
-            <h2>About Me</h2>
-            <p>Hello! I'm Mostafa Baghi, a software engineer passionate about building impactful solutions. I specialize in full-stack web development, algorithmic trading, and data-driven applications. I’m always learning and evolving to stay ahead in the tech world.</p>
-            <p>Explore my work and projects below or connect with me!</p>
-        </section>
-
-        <!-- Skills Section -->
-        <section>
-            <h2>Skills</h2>
-            <div class="skills">
-                <ul>
-                    <li><span>Programming Languages:</span> Python, JavaScript, PHP, Dart</li>
-                    <li><span>Frameworks:</span> Node.js, Vue.js, Laravel, Django, Flutter</li>
-                    <li><span>Databases:</span> MySQL, MongoDB</li>
-                    <li><span>Cloud Platforms:</span> Google Cloud, Azure</li>
-                    <li><span>Other Tools:</span> Git, GitHub Actions</li>
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="grid">
+            <div class="glass-card" style="border-left: 4px solid var(--primary);">
+                <div class="project-title">
+                    Lead Developer
+                    <span class="badge">Current</span>
+                </div>
+                <span class="project-role">AL-ETIHAD GROUP COMPANIES - Iraq</span>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    Leading the technical strategy and development of a massive <strong>GPS/CRM Ecosystem</strong>.
+                </p>
+                <ul style="margin: 1rem 0 1rem 1.2rem; color: var(--text-muted); font-size: 0.95rem;">
+                    <li>Architecting a Cross-Platform solution (Flutter/React/Node.js).</li>
+                    <li>Managing millions of real-time data points with Socket.io.</li>
+                    <li>Optimizing memory usage for 12GB RAM server constraints.</li>
+                    <li>Implementing Clean Architecture & Security best practices.</li>
                 </ul>
             </div>
-        </section>
 
-        <!-- Work Experience Section -->
-        <section>
-            <h2>Work Experience</h2>
-            <div class="experience">
-                <ul>
-                    <li>
-                        <span>Full Stack Developer - XYZ Company</span><br>
-                        <small>January 2022 - Present</small>
-                        <p>Led the development of an e-commerce platform, integrated real-time payment processing using Stripe API, and enhanced user authentication with OAuth 2.0. Collaborated in an Agile team to deliver high-quality software.</p>
-                    </li>
-                    <li>
-                        <span>Software Engineer Intern - ABC Tech Solutions</span><br>
-                        <small>June 2021 - December 2021</small>
-                        <!--<p>Worked on the backend of an inventory management system using Django and PostgreSQL, optimizing API performance and contributing to code quality during daily stand-ups and sprint reviews.</p>-->
-                    </li>
-                </ul>
+            <div class="glass-card">
+                <div class="project-title">Full Stack Developer</div>
+                <span class="project-role">XYZ Company</span>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    Led e-commerce platform development, integrated payment gateways, and optimized backend APIs using PHP and Django.
+                </p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section>
-            <h2>Projects</h2>
-            <div class="projects">
-                <ul>
-                    <li>
-                        <span><a href="https://github.com/mostafabaghi/chat-app" target="_blank">Real-Time Chat Application</a></span>
-                        <p>A real-time messaging app built with Node.js and Socket.io, supporting private chats and file sharing with JWT-based authentication.</p>
-                    </li>
-                    <li>
-                        <span><a href="https://github.com/mostafabaghi/ai-assistant" target="_blank">AI-Powered Personal Assistant</a></span>
-                        <p>AI assistant using Python, TensorFlow, and NLP to understand voice commands, set reminders, and perform web searches.</p>
-                    </li>
-                    <li>
-                        <span><a href="https://github.com/mostafabaghi/portfolio" target="_blank">Portfolio Website</a></span>
-                        <p>This portfolio site is built with HTML, CSS, and JavaScript to showcase my professional projects and skills.</p>
-                    </li>
-                </ul>
+    <section id="skills">
+        <h2>Tech Stack</h2>
+        <div class="glass-card">
+            <h3 style="color: #fff; margin-bottom: 1rem;">Primary Expertise</h3>
+            <div class="tech-stack">
+                <span class="tag highlight">Flutter (Riverpod/GoRouter)</span>
+                <span class="tag highlight">Node.js</span>
+                <span class="tag highlight">Socket.io</span>
+                <span class="tag highlight">React.js</span>
+                <span class="tag highlight">Clean Architecture</span>
+                <span class="tag highlight">MongoDB</span>
+                <span class="tag highlight">System Design</span>
             </div>
-        </section>
 
-        <!-- Education Section -->
-        <section>
-            <h2>Education</h2>
-            <div class="education">
-                <ul>
-                    <li>
-                        <span>Bachelor of Science in Software Engineering</span><br>
-                        <small>University of Azad, Iran - Qom</small>
-                        <!--p>Relevant coursework included Data Structures, Algorithms, Software Engineering, and Project Desing & Management.</p-->
-                    </li>
-                </ul>
+            <h3 style="color: #fff; margin-top: 2rem; margin-bottom: 1rem;">AI & Emerging Tech</h3>
+            <div class="tech-stack">
+                <span class="tag highlight">Vertex AI</span>
+                <span class="tag highlight">YOLOv8 (Object Detection)</span>
+                <span class="tag highlight">Ollama (Local LLMs)</span>
+                <span class="tag">Python</span>
+                <span class="tag">TensorFlow</span>
             </div>
-        </section>
 
-        <!-- Certifications Section -->
-        <section>
-            <h2>Certifications</h2>
-            <div class="certifications">
-                <ul>
-                    <li>Foundations Series - CIW</li>
-                    <li>Web & Mobile Design Series - CIW</li>
-                    <li>Web Development Series - CIW</li>
-                    <li>Foundations Series - CIW</li>
-                    <li>Search Engine Optimization (SEO) - Tehran Technical Complex</li>
-                    <li>Graphic Design - Technical & Vocational Skill Certificate</li>
-                </ul>
+            <h3 style="color: #fff; margin-top: 2rem; margin-bottom: 1rem;">Legacy & Tools</h3>
+            <div class="tech-stack">
+                <span class="tag">PHP</span>
+                <span class="tag">Laravel</span>
+                <span class="tag">Django</span>
+                <span class="tag">Docker</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">Git</span>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section>
-            <h2>Contact</h2>
-            <div class="contact">
-                <p>Feel free to reach out to me for collaborations or inquiries:</p>
-                <p>Telegram: <a href="https://t.me/mbghisupport">@mbghisupport</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/mostafabaghi" target="_blank">LinkedIn Profile</a></p>
-                <p>GitHub: <a href="https://github.com/mostafabaghi" target="_blank">github.com/mostafabaghi</a></p>
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            
+            <div class="glass-card">
+                <div class="project-title">
+                    GPS/CRM Ecosystem
+                    <i class="fas fa-map-marked-alt" style="color: var(--primary);"></i>
+                </div>
+                <p style="margin: 1rem 0; color: var(--text-muted);">
+                    A comprehensive ecosystem for logistics and tracking. Includes a Mobile App (Flutter), Web Dashboard (React), and a High-Performance Backend (Node.js).
+                </p>
+                <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 1rem;">
+                    <strong>Key Challenge:</strong> Handling millions of location packets on limited hardware (6GB Node.js limit). Solved via strict memory management and stream processing.
+                </div>
+                <div class="tech-stack">
+                    <span class="tag highlight">Flutter Map</span>
+                    <span class="tag highlight">flutter_animate</span>
+                    <span class="tag highlight">Socket.io</span>
+                    <span class="tag highlight">Node.js</span>
+                </div>
             </div>
-        </section>
-    </div>
 
-    <!-- Footer Section -->
+            <div class="glass-card">
+                <div class="project-title">
+                    AI Object Detection Pipeline
+                    <i class="fas fa-eye" style="color: var(--accent);"></i>
+                </div>
+                <p style="margin: 1rem 0; color: var(--text-muted);">
+                    Developed an intelligent vision system leveraging <strong>YOLO</strong> and <strong>Vertex AI</strong> for real-time object detection and classification in industrial environments.
+                </p>
+                <div class="tech-stack">
+                    <span class="tag highlight">YOLOv8</span>
+                    <span class="tag highlight">Google Vertex AI</span>
+                    <span class="tag highlight">Python</span>
+                    <span class="tag">Computer Vision</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <div class="project-title">
+                    Secure Real-Time Chat
+                    <i class="fas fa-comments" style="color: var(--text-muted);"></i>
+                </div>
+                <p style="margin: 1rem 0; color: var(--text-muted);">
+                    Scalable messaging infrastructure supporting private chats, groups, and file sharing with End-to-End security focus.
+                </p>
+                <div class="tech-stack">
+                    <span class="tag highlight">Node.js</span>
+                    <span class="tag highlight">Socket.io</span>
+                    <span class="tag">JWT Auth</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <footer>
-        <p>© 2025 Mostafa Baghi. All Rights Reserved. | <a href="https://github.com/mostafabaghi" target="_blank">GitHub</a> | <a href="https://t.me/mbghisupport">Telegram</a></p>
+        <div class="social-links">
+            <a href="https://github.com/mostafabaghi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mostafabaghi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://t.me/mbghisupport" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p>© 2026 Seyed Mostafa Baghi. Built with <i class="fas fa-code" style="color: var(--accent);"></i> & Performance in mind.</p>
     </footer>
+
 </body>
 </html>
