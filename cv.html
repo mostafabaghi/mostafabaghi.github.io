@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seyed Mostafa Baghi - Lead Developer CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a; /* Deep Royal Blue */
+            --accent-color: #3b82f6; /* Bright Blue for highlights */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-gray: #f9fafb;
+            --line-color: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #555; /* Just for browser view */
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            min-height: 297mm;
+            display: grid;
+            grid-template-columns: 32% 68%; /* Sidebar vs Main Content */
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        /* --- Left Sidebar --- */
+        .sidebar {
+            background-color: #f3f4f6;
+            padding: 40px 25px;
+            border-right: 1px solid var(--line-color);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .profile-img-placeholder {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 auto 10px auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .contact-item svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--primary-color);
+        }
+
+        .section-title-side {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--line-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .tag.highlight {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .list-item {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .list-item::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* --- Main Content --- */
+        .main-content {
+            padding: 40px 35px;
+        }
+
+        .header {
+            margin-bottom: 35px;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.1;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .summary {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .section-title-main {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .exp-item {
+            margin-bottom: 25px;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .exp-role {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .date {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        .achievements {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .achievements li {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 15px;
+            line-height: 1.5;
+        }
+
+        .achievements li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .page {
+                box-shadow: none;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-img-placeholder">SM</div>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    smustafabaghi@gmail.com
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    +964 788 105 6697
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Baghdad, Iraq
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    github.com/mostafabaghi
+                </div>
+            </div>
+
+            <div class="section-title-side">Education</div>
+            <div>
+                <div style="font-weight: 700; font-size: 0.9rem;">B.Sc. Software Engineering</div>
+                <div style="font-size: 0.8rem; margin-top: 3px;">Azad University of Qom</div>
+            </div>
+
+            <div class="section-title-side">Core Skills</div>
+            <div class="skill-tags">
+                <span class="tag highlight">System Architecture</span>
+                <span class="tag highlight">Flutter</span>
+                <span class="tag highlight">Node.js</span>
+                <span class="tag">Clean Architecture</span>
+                <span class="tag">Socket.io</span>
+                <span class="tag">React.js</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">Redis</span>
+                <span class="tag">Docker</span>
+                <span class="tag">CI/CD</span>
+                <span class="tag">YOLOv8 / AI</span>
+                <span class="tag">Git</span>
+            </div>
+
+            <div class="section-title-side">Soft Skills</div>
+            <div>
+                <div class="list-item">Team Leadership</div>
+                <div class="list-item">Strategic Planning</div>
+                <div class="list-item">Resource Management</div>
+                <div class="list-item">Problem Solving</div>
+            </div>
+
+            <div class="section-title-side">Languages</div>
+            <div>
+                <div class="list-item">English (Professional)</div>
+                <div class="list-item">Arabic (Working Proficiency)</div>
+                <div class="list-item">Persian (Native)</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="name">Seyed Mostafa Baghi</h1>
+                <div class="role">Lead Software Developer & System Architect</div>
+                <p class="summary">
+                    Results-oriented Lead Developer with <strong>13+ years of experience</strong> in architecting high-performance, scalable software solutions. Currently leading technical strategy for massive-scale ecosystems in Iraq, specializing in <strong>memory-efficient systems</strong> and real-time data processing. Expert in bridging the gap between complex engineering challenges and user-centric business goals.
+                </p>
+            </div>
+
+            <div class="section-title-main">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Professional Experience
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-role">Lead Software Developer</div>
+                        <div class="company">AL-ETIHAD GROUP COMPANIES</div>
+                    </div>
+                    <div class="date">2025 - Present</div>
+                </div>
+                <ul class="achievements">
+                    <li><strong>Architected a GPS/CRM Ecosystem:</strong> Designed and built a cross-platform solution (Mobile, Desktop, Web) handling <strong>1M+ daily request packets</strong>.</li>
+                    <li><strong>Performance Optimization:</strong> Engineered a memory-efficient Node.js backend to perform optimally under strict 12GB RAM server constraints using stream processing and Clean Architecture.</li>
+                    <li><strong>Leadership & Management:</strong> Leading the technical deployment and overseeing User Acceptance Testing (UAT) with a team of <strong>20+ internal staff</strong>, ensuring seamless adoption.</li>
+                    <li><strong>Tech Stack:</strong> Flutter (Riverpod, GoRouter), Node.js, Socket.io, React, MongoDB.</li>
+                </ul>
+            </div>
+
+            <div class="exp-item">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-role">Senior Full-Stack Consultant</div>
+                        <div class="company">Freelance & Personal Projects</div>
+                    </div>
+                    <div class="date">2012 - 2025</div>
+                </div>
+                <ul class="achievements">
+                    <li>Delivered robust software solutions for international clients over 12 years, focusing on scalability and modern UI/UX standards.</li>
+                    <li><strong>Innovation Spotlight (AR):</strong> Developed a web-based <strong>3D Virtual Try-On</strong> system for an eyewear store, utilizing webcam/selfie cameras to render real-time 3D models on users' faces.</li>
+                    <li><strong>Communication Systems:</strong> Built secure, end-to-end encrypted messaging and video calling platforms using WebRTC.</li>
+                </ul>
+            </div>
+
+            <div class="section-title-main">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                Key Projects & Impact
+            </div>
+
+            <div class="exp-item">
+                <div class="company" style="font-size: 0.95rem;">Logistics & Tracking Core</div>
+                <p style="font-size: 0.85rem; color: #4b5563; margin-top: 5px;">
+                    A comprehensive ecosystem enabling real-time fleet tracking.
+                </p>
+                <ul class="achievements">
+                    <li>Implemented <strong>Socket.io</strong> clusters to manage high-concurrency connections.</li>
+                    <li>Developed a unified <strong>Flutter</strong> codebase for Android, iOS, and Windows Desktop.</li>
+                </ul>
+            </div>
+
+             <div class="exp-item">
+                <div class="company" style="font-size: 0.95rem;">AI Vision Pipeline</div>
+                <p style="font-size: 0.85rem; color: #4b5563; margin-top: 5px;">
+                    Industrial monitoring solution using Computer Vision.
+                </p>
+                <ul class="achievements">
+                    <li>Integrated <strong>YOLOv8</strong> with Google Vertex AI for real-time object detection.</li>
+                    <li>Optimized inference time for edge deployment.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
